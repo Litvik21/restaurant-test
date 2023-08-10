@@ -18,17 +18,17 @@ public class Order {
     private String product;
     @Enumerated(EnumType.STRING)
     @Column(name = "order_function")
-    private Function function;
+    private Status status;
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
-    public enum Function {
+    public enum Status {
         RECEIVED("RECEIVED"),
         ACCEPT("ACCEPT"),
         REJECT("REJECT");
 
-        Function(String value) {
+        Status(String value) {
         }
     }
 

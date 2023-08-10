@@ -32,6 +32,12 @@ public class OrderController {
         return mapper.toDto(order);
     }
 
+    @GetMapping
+    @ApiOperation(value = "Get list of orders")
+    public List<OrderResponseDto> getAll() {
+        return service.getAll().stream().map(mapper::toDto).toList();
+    }
+
     @GetMapping(value = "/newOrder", headers = "Accept=*/*",
             consumes = MediaType.ALL_VALUE, produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     @ApiOperation(value = "Listening for updates of new orders")

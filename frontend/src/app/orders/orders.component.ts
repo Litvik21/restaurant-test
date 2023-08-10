@@ -1,5 +1,5 @@
 import {Component, NgZone, OnInit} from '@angular/core';
-import {FunctionMapping, Order, OrderFunction} from "../model/order";
+import {StatusMapping, Order, OrderStatus} from "../model/order";
 import {Router} from "@angular/router";
 import {OrderService} from "../service/order.service";
 

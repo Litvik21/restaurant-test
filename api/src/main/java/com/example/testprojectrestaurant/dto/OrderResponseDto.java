@@ -2,6 +2,6 @@ package com.example.testprojectrestaurant.dto;
 
 public record OrderResponseDto (Long id,
                                 String product,
-                                String function,
+                                String status,
                                 Long userId) {
 }

@@ -34,7 +34,7 @@ class OrderServiceImplTest {
         order = new Order();
         order.setId(1L);
         order.setProduct("Product");
-        order.setFunction(Order.Function.RECEIVED);
+        order.setStatus(Order.Status.RECEIVED);
         order.setUser(user);
     }
 

@@ -6,14 +6,14 @@
         <div class="card-details">
           <h5 class="order-title">Owner: {{ order.user.username }}</h5>
           <h5 class="order-title">{{ order.product }}</h5>
-          <h5 class="order-title">{{ order.function }}</h5>
+          <h5 class="order-title">{{ order.status }}</h5>
           <button class="btn btn-primary" (click)="toggleDropdown(order)">Change Status</button>
           <div *ngIf="isDropdownVisibleFor(order)">
             <div class="form-group">
               <label for="functionSelect{{order.id}}">Choose status:</label>
-              <select class="form-control" id="functionSelect{{order.id}}" (change)="onFunctionChange(order, $event)">
-                <option *ngFor="let func of functions" [value]="func">
-                  {{ functionMapping[func] }}
+              <select class="form-control" id="functionSelect{{order.id}}" (change)="onStatusChange(order, $event)">
+                <option *ngFor="let status of statuses" [value]="status">
+                  {{ statusMapping[status] }}
                 </option>
               </select>
             </div>

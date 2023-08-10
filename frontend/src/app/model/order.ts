@@ -3,19 +3,19 @@ import {User} from "./user";
 export interface Order {
   id: number;
   product: string;
-  function: OrderFunction;
+  status: OrderStatus;
   userId: number;
   user: User;
 }
 
-export enum OrderFunction {
+export enum OrderStatus {
   RECEIVED ='Received',
   ACCEPT = 'Accept',
   REJECT = 'Reject'
 }
 
-export const FunctionMapping = {
-  [OrderFunction.RECEIVED]: "Received",
-  [OrderFunction.ACCEPT]: "Accept",
-  [OrderFunction.REJECT]: "Reject"
+export const StatusMapping = {
+  [OrderStatus.RECEIVED]: "Received",
+  [OrderStatus.ACCEPT]: "Accept",
+  [OrderStatus.REJECT]: "Reject"
 }

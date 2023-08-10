@@ -25,6 +25,14 @@ export class OrderService {
 
   private orderUrl = environment.urlPath + '/orders';
 
+  getOrders(): Observable<Order[]> {
+    const headers = this.getHeaders();
+    headers.append('Content-Type', 'application/json');
+    return this.http.get<Order[]>(this.orderUrl, {headers}).pipe(
+        catchError(this.handleError<Order[]>('getOrders', []))
+      );
+  }
+
   listenToEmitter(): Observable<any> {
     const url = `${this.orderUrl}/newOrder`;
     return new Observable<any>((observer) => {

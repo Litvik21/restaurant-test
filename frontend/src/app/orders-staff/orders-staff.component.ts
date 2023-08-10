@@ -1,5 +1,5 @@
 import {Component, NgZone, OnInit} from '@angular/core';
-import {FunctionMapping, Order, OrderFunction} from "../model/order";
+import {StatusMapping, Order, OrderStatus} from "../model/order";
 import {OrderService} from "../service/order.service";
 import {Router} from "@angular/router";
 import {UserService} from "../service/user.service";
@@ -13,8 +13,8 @@ import {User} from "../model/user";
 })
 export class OrdersStaffComponent implements OnInit {
   orders: Order[] = []
-  functions = Object.values(OrderFunction);
-  functionMapping = FunctionMapping;
+  statuses = Object.values(OrderStatus);
+  statusMapping = StatusMapping;
   dropdownStates: Map<number, boolean> = new Map<number, boolean>();
 
   constructor(private orderService: OrderService,
@@ -62,22 +62,15 @@ export class OrdersStaffComponent implements OnInit {
     });
   }
 
-  // getOrders(): void {
-  //   this.orderService.getOrders()
-  //     .subscribe(orders => {
-  //       this.orders = orders;
-  //     });
-  // }
-
-  onFunctionChange(order: Order, event: any) {
-    order.function = event.target.value as OrderFunction;
+  onStatusChange(order: Order, event: any) {
+    order.status = event.target.value as OrderStatus;
   }
 
 
   submit(order: any) {
     console.log(order)
     this.toggleDropdown(order);
-    const newOrder: any = {product: order.product, function: order.function, userId: order.userId};
+    const newOrder: any = {product: order.product, status: order.status, userId: order.userId};
     this.orderService.updateOrder(order.id, newOrder).subscribe(updatedOrder => {
       this.userService.getUser(updatedOrder.userId).subscribe(user => {
         updatedOrder.user = user;
@@ -97,7 +90,7 @@ export class OrdersStaffComponent implements OnInit {
         this.ngZone.run(() => {
           console.log(data);
           this.userService.getUser(data.userId).subscribe(user => {
-            const newOrder: Order = { id: data.id, product: data.product, function: data.function,
+            const newOrder: Order = { id: data.id, product: data.product, status: data.status,
               user: user, userId: data.userId};
             console.log(newOrder)
             const orderIndex = this.orders.findIndex(order => order.id === newOrder.id);

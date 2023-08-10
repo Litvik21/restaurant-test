@@ -19,7 +19,7 @@ public class OrderMapper {
                 -> new RuntimeException("Can't find user by username: " + username));
         Order order = new Order();
         order.setProduct(dto.product());
-        order.setFunction(Order.Function.RECEIVED);
+        order.setStatus(Order.Status.RECEIVED);
         order.setUser(user);
 
         return order;
@@ -29,7 +29,7 @@ public class OrderMapper {
         return new OrderResponseDto(
                 order.getId(),
                 order.getProduct(),
-                order.getFunction().name(),
+                order.getStatus().name(),
                 order.getUser().getId()
         );
     }
@@ -39,7 +39,7 @@ public class OrderMapper {
 
         Order order = new Order();
         order.setProduct(dto.product());
-        order.setFunction(Order.Function.valueOf(dto.function().toUpperCase()));
+        order.setStatus(Order.Status.valueOf(dto.status().toUpperCase()));
         order.setUser(user);
 
 

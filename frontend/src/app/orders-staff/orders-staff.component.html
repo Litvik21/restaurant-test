@@ -1,0 +1,29 @@
+<h5 class="order-title">Orders for Stuff</h5>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-lg-4" *ngFor="let order of orders.reverse()">
+      <div class="card mb-4">
+        <div class="card-details">
+          <h5 class="order-title">Owner: {{ order.user.username }}</h5>
+          <h5 class="order-title">{{ order.product }}</h5>
+          <h5 class="order-title">{{ order.function }}</h5>
+          <button class="btn btn-primary" (click)="toggleDropdown(order)">Change Status</button>
+          <div *ngIf="isDropdownVisibleFor(order)">
+            <div class="form-group">
+              <label for="functionSelect{{order.id}}">Choose status:</label>
+              <select class="form-control" id="functionSelect{{order.id}}" (change)="onFunctionChange(order, $event)">
+                <option *ngFor="let func of functions" [value]="func">
+                  {{ functionMapping[func] }}
+                </option>
+              </select>
+            </div>
+            <button class="btn btn-primary" (click)="submit(order)">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="!orders || orders.length === 0" class="col-12 text-center">
+      <p>Orders loading...</p>
+    </div>
+  </div>
+</div>

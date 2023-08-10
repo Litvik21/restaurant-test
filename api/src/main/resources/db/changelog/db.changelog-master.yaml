@@ -1,0 +1,15 @@
+databaseChangeLog:
+  - include:
+      file: /db/changelog/changes/create-table-roles.sql
+  - include:
+      file: /db/changelog/changes/create-table-users.sql
+  - include:
+      file: /db/changelog/changes/create-table-users-role.sql
+  - include:
+      file: /db/changelog/changes/initial-roles.sql
+  - include:
+      file: /db/changelog/changes/create-table-orders.sql
+  - include:
+      file: /db/changelog/changes/initial-staff.sql
+  - include:
+      file: /db/changelog/changes/initial-users-role-for-staff.sql

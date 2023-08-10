@@ -1,0 +1,61 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration Page</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card mt-5">
+        <div class="card-header">
+          <h3 class="text-center">Registration</h3>
+        </div>
+        <div class="card-body">
+          <form id="registrationForm" name="registrationForm" (ngSubmit)="register()">
+
+            <div class="mb-3">
+              <label for="email">Email address</label>
+              <input type="email" class="form-control" name="email" id="email" [(ngModel)]="email" placeholder="Enter email">
+            </div>
+
+            <div class="mb-3">
+              <label for="username">Username</label>
+              <input type="text" class="form-control" name="username" id="username" [(ngModel)]="username" placeholder="Enter username">
+            </div>
+
+            <div class="mb-3">
+              <label for="password">Password</label>
+              <input type="password" class="form-control" name="password" id="password" [(ngModel)]="password" placeholder="Enter password">
+            </div>
+
+            <div class="mb-3">
+              <label for="confirmPassword">Confirm Password</label>
+              <input type="password" class="form-control" name="repeatPassword" id="confirmPassword" [(ngModel)]="repeatPassword" placeholder="Confirm password">
+            </div>
+            <div class="d-flex justify-content-between">
+              <button class="btn btn-primary" type="submit">Submit</button>
+              <button class="btn btn-secondary" type="button" routerLink="/login">Already Registered</button>
+            </div>
+          </form>
+          <div *ngIf="registrationErrors.length > 0" class="error-container">
+            <p>An error occurred while registering:</p>
+            <ul>
+              <li *ngFor="let error of registrationErrors">{{ error }}</li>
+            </ul>
+          </div>
+
+          <div *ngIf="generalError !== ''" class="general-error">
+            <p>{{ generalError }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

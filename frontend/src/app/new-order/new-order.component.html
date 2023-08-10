@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<form id="uploadForm" name="uploadForm">
+
+  <div class="alert alert-danger" [style.display]="isError ? 'block' : 'none'">
+    Error uploading file to server
+  </div>
+  <div class="mb-3">
+    <label for="product">Product title</label>
+    <input type="text" class="form-control" name="product" id="product" aria-describedby="Product title"
+           placeholder="Enter title of product">
+  </div>
+
+  <button class="btn btn-primary" (click)="submit()" type="button">Submit</button>
+
+</form>
+

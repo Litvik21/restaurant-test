@@ -1,0 +1,31 @@
+.loading-status {
+  color: #fff;
+  background-color: #007bff;
+  margin: 6px;
+  padding: 10px;
+  border-radius: 10px; /* Закругление углов */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Тень */
+  display: inline-block;
+  position: relative;
+}
+
+.loading-status:before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px 6px 0;
+  border-style: solid;
+  border-color: #007bff transparent transparent;
+}
+
+@media (max-width: 768px) {
+  .loading-status {
+    display: block;
+    position: absolute;
+    top: 50px;
+    right: 10px;
+    z-index: 1000;
+  }
+}

@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-lg-4" *ngFor="let order of orders.reverse()">
+      <div class="card mb-4">
+        <div class="card-details">
+          <h5 class="order-title">{{ order.product }}</h5>
+          <h5 class="order-title">{{ order.function }}</h5>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="!orders || orders.length === 0" class="col-12 text-center">
+      <p>Orders loading...</p>
+    </div>
+  </div>
+</div>

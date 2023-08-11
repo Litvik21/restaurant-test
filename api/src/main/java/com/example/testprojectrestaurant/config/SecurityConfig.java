@@ -37,7 +37,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .cors().configurationSource(corsConfigurationSource())
                 .and()
                 .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and()
                 .authorizeRequests()
                 .antMatchers(HttpMethod.POST,"/login", "/register").permitAll()
                 .antMatchers(HttpMethod.PUT, "/orders/update/**").hasRole(Role.RoleName.STAFF.name())
@@ -46,8 +47,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET,"/orders/my").authenticated()
                 .antMatchers(HttpMethod.POST,"/orders/new").authenticated()
                 .anyRequest()
-                .authenticated().and()
-                .apply(new JwtConfigurer(provider)).and()
+                .authenticated()
+                .and()
+                .apply(new JwtConfigurer(provider))
+                .and()
                 .headers().frameOptions().disable();
     }
 

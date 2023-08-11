@@ -17,10 +17,6 @@ export class TokenService {
     window.addEventListener('beforeunload', () => {
       this.removeToken();
     });
-
-    window.addEventListener('unload', () => {
-      this.removeToken();
-    });
   }
 
   getCurrentUser(): CurrentUser {

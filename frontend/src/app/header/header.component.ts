@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit(): void {
-    if (this.isLoggedIn === false) {
+    if (!this.isLoggedIn) {
       this.router.navigate(['/register']);
     }
     this.authService.isLoggedIn$.subscribe(isLoggedIn => {
